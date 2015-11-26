@@ -3,11 +3,16 @@ using System.Collections;
 
 public class OpenDoor : MonoBehaviour {
     bool isOpen = false;
+    AudioSource doorOpen;
+    AudioSource doorClose;
 
-	// Use this for initialization
+    // Use this for initialization
 
-	void Start () {
-	}
+    void Start () {
+        AudioSource[] audios = GetComponents<AudioSource>();
+        doorOpen = audios[0];
+        doorClose = audios[1];
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -22,7 +27,9 @@ public class OpenDoor : MonoBehaviour {
             GetComponent<Animation>()["OpenDoor"].time = 0.0f;
             GetComponent<Animation>()["OpenDoor"].speed = 1.0f;
             GetComponent<Animation>().Play();
-            //GetComponent<AudioSource>().Play();
+
+            doorOpen.Play();
+
             isOpen = true;
         }
         else if (isOpen == true && !GetComponent<Animation>().IsPlaying("OpenDoor"))
@@ -30,6 +37,9 @@ public class OpenDoor : MonoBehaviour {
             GetComponent<Animation>()["OpenDoor"].time = GetComponent<Animation>()["OpenDoor"].length;
             GetComponent<Animation>()["OpenDoor"].speed = -1.0f;
             GetComponent<Animation>().Play();
+
+            doorClose.PlayDelayed(0.25f);
+
             isOpen = false;
         }
     }
