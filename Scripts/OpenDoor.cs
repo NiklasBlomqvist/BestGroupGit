@@ -47,7 +47,7 @@ public class OpenDoor : MonoBehaviour {
 
     public void closeThisDoor()
     {
-        if (isOpen)
+        if (isOpen && !isLocked)
         {
             GetComponent<Animation>()["OpenDoor"].time = GetComponent<Animation>()["OpenDoor"].length;
             GetComponent<Animation>()["OpenDoor"].speed = -3.0f;
