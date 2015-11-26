@@ -26,8 +26,6 @@ public class OpenDoor : MonoBehaviour {
         if(isLocked == false && isOpen == false && !GetComponent<Animation>().IsPlaying("OpenDoor"))
         {
 
-            print("Open Door");
-
             // Sets time to start animation, what speed and then plays it
             GetComponent<Animation>()["OpenDoor"].time = 0.0f;
             GetComponent<Animation>()["OpenDoor"].speed = 1.0f;
@@ -41,8 +39,6 @@ public class OpenDoor : MonoBehaviour {
         // Close door
         else if (isLocked == false && isOpen == true && !GetComponent<Animation>().IsPlaying("OpenDoor"))
         {
-
-            print("Close Door");
 
             GetComponent<Animation>()["OpenDoor"].time = GetComponent<Animation>()["OpenDoor"].length;
             GetComponent<Animation>()["OpenDoor"].speed = -1.0f;

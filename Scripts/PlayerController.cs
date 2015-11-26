@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     public float walkSpeed = 5.0f;
     public float runSpeed = 10.0f;
     public float jumpSpeed = 3.0f;
+    private bool frozen = false;
 
     public float mouseSensitivty = 3;
 
@@ -25,7 +26,7 @@ public class PlayerController : MonoBehaviour {
         CharacterController controller = GetComponent<CharacterController>();
 
         // Check if the controller is on the ground
-        if (controller.isGrounded)
+        if (controller.isGrounded && !frozen)
         {
 
             moveDirection = transform.forward * Input.GetAxis("Vertical");
@@ -75,5 +76,18 @@ public class PlayerController : MonoBehaviour {
     public void restart()
     {
         transform.position = startPosition;
+        //StartCoroutine(freeze());
+    }
+    
+    public bool isFrozen()
+    {
+        return frozen;
+    }
+
+    IEnumerator freeze()
+    {
+        frozen = true;
+        yield return new WaitForSeconds(2.0f);
+        frozen = false;
     }
 }

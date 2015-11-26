@@ -38,8 +38,15 @@ public class BedroomDarknessTrigger : MonoBehaviour
         triggerHappened = true;
         yield return new WaitForSeconds(5.0f);
 
-        GameObject.Find("BedroomDoor").GetComponent<OpenDoor>().unlockDoor();
-        GameObject.Find("BedroomDoor").GetComponent<OpenDoor>().openDoor();
+        if(GameObject.Find("Flashlight").GetComponent<Flashlight>().flashlightOn)
+        {
+            GameObject.Find("BedroomDoor").GetComponent<OpenDoor>().unlockDoor();
+            GameObject.Find("BedroomDoor").GetComponent<OpenDoor>().openDoor();
+        }
+        else
+        {
+            GameObject.Find("Player").GetComponent<PlayerController>().restart();
+        }
 
         RenderSettings.ambientIntensity = originalAmbientIntensity;
     }
