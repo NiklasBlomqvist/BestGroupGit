@@ -4,11 +4,16 @@ using System.Collections;
 public class Flashlight : MonoBehaviour {
     private Light flashlight;
     public bool flashlightOn = false;
+    AudioSource lightOn;
+    AudioSource lightOff;
 
     // Use this for initialization
     void Start () {
         // Gets the flashlight
         flashlight = GameObject.Find("Flashlight").GetComponent<Light>();
+        AudioSource[] audios = GetComponents<AudioSource>();
+        lightOn = audios[0];
+        lightOff = audios[1];
     }
 
     // Update is called once per frame
@@ -22,6 +27,15 @@ public class Flashlight : MonoBehaviour {
                 // Toggle the flashlight
                 flashlight.enabled = !flashlight.enabled;
                 flashlightOn = !flashlightOn;
+
+                if(flashlight.enabled)
+                {
+                    lightOn.Play();
+                }
+                else
+                {
+                    lightOff.Play();
+                }
             }
 
         }
