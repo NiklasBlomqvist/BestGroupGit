@@ -66,4 +66,9 @@ public class Flashlight : MonoBehaviour {
         flashlight.enabled = !flashlight.enabled;
 
     }
+
+    public bool isOn()
+    {
+        return flashlightOn;
+    }
 }
