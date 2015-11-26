@@ -12,8 +12,8 @@ public class Flashlight : MonoBehaviour {
         // Gets the flashlight
         flashlight = GameObject.Find("Flashlight").GetComponent<Light>();
         AudioSource[] audios = GetComponents<AudioSource>();
-        //lightOn = audios[0];
-        //lightOff = audios[1];
+        lightOn = audios[0];
+        lightOff = audios[1];
     }
 
     // Update is called once per frame

@@ -17,7 +17,7 @@ public class PlayerSound : MonoBehaviour
     {
 
         controller = GetComponent<CharacterController>();
-        clips = new AudioClip[3];
+        clips = new AudioClip[4];
         clips[0] = Resources.Load<AudioClip>("stepC1");
         clips[1] = Resources.Load<AudioClip>("stepC2");
         clips[2] = Resources.Load<AudioClip>("stepC3");
